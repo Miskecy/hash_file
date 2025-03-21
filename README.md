@@ -1,5 +1,4 @@
 # SHA-256 File Hasher
-
 A simple Python script to compute the **SHA-256 hash** of a file and log it to a file, **without overwriting previous entries**.  
 Each log entry includes the **timestamp, file name, and hash value**.
 
@@ -8,6 +7,9 @@ Each log entry includes the **timestamp, file name, and hash value**.
 - **Appends** hash results to a log file instead of overwriting
 - Stores **timestamp, file name, and hash**
 - Allows specifying a custom output log file
+- **GUI applications** available for drag-and-drop functionality:
+  - **File Hasher GUI**: Generate and log hashes by dragging files
+  - **Hash Verifier GUI**: Verify file integrity against previously logged hashes
 
 ## Installation
 Ensure you have Python **3.7+** installed, then clone the repository:
@@ -16,7 +18,12 @@ git clone https://github.com/yourusername/sha256-file-hasher.git
 cd sha256-file-hasher
 ```
 
-## Usage
+For the GUI applications, you'll need the tkinterdnd2 library for drag-and-drop support:
+```bash
+pip install tkinterdnd2
+```
+
+## Command-Line Usage
 Run the script with a file path as an argument:
 ```bash
 python sha256-file-hasher.py <file_path>
@@ -33,10 +40,40 @@ Hash a file and save to default log (hash_log.txt):
 ```bash
 python sha256-file-hasher.py myfile.txt
 ```
-
 Specify a custom output file for logging:
 ```bash
 python sha256-file-hasher.py myfile.txt -o my_hashes.log
+```
+
+## GUI Applications
+
+### File Hasher GUI
+A graphical interface for hashing files with drag-and-drop functionality.
+
+**Features:**
+- Drag and drop multiple files to hash them at once
+- Select output log file location
+- View hashing results in real-time
+- Process files in background to keep interface responsive
+
+**Usage:**
+```bash
+python sha256-file-hasher-GUI.py
+```
+
+### Hash Verifier GUI
+A tool to verify if files have been modified by comparing current hashes with previously recorded hashes.
+
+**Features:**
+- Load hash records from log files
+- Drag and drop files to verify their integrity
+- Color-coded results showing matches and modifications
+- Detailed comparison of stored vs. current hashes
+- Summary statistics of verification results
+
+**Usage:**
+```bash
+python sha256-file-hasher-verifier-GUI.py
 ```
 
 ## Example Output in hash_log.txt
@@ -51,8 +88,11 @@ This script uses Python's built-in modules:
 - argparse – for command-line arguments
 - datetime – for timestamps
 - os – for handling file paths
+- tkinter – for GUI applications
+- threading – for background processing in GUI applications
 
-No additional dependencies are required.
+Additional dependencies for GUI applications:
+- tkinterdnd2 – for drag-and-drop functionality (optional but recommended)
 
 ## License
 This project is licensed under the MIT License. Feel free to use, modify, and share!
@@ -61,5 +101,4 @@ This project is licensed under the MIT License. Feel free to use, modify, and sh
 Pull requests are welcome! If you find any issues or have suggestions, feel free to open an issue.
 
 ---
-
 Happy Hashing! 🚀
